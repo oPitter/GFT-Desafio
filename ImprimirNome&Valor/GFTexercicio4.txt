@@ -1,0 +1,95 @@
+<?php
+
+class Produto
+{
+    protected $nome;
+    protected $valor;
+    protected $tipo;
+    protected $quantidade;
+
+    /**
+     * Produto constructor.
+     * @param $nome
+     * @param $valor
+     * @param $tipo
+     */
+    public function __construct($nome, $valor, $tipo)
+    {
+        $this->nome  = $nome;
+        $this->valor = $valor;
+        $this->tipo  = $tipo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNome(): string
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValor(): float
+    {
+        return $this->valor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipo(): int
+    {
+        return $this->tipo;
+    }
+}
+
+class Caixa
+{
+    /**
+     * Calcula com o desconto aplicado
+     *
+     * @param Produto $produto
+     * @param int $quantidade
+     * @return float|int
+     */
+    public function calculaValorFinal(Produto $produto, int $quantidade)
+    {
+        $desconto = 0;
+        switch ($produto->getTipo()) {
+            case 1:
+                $desconto = 0.5;
+                break;
+            case 2:
+                $desconto = 0.12;
+                break;
+            case 3:
+                $desconto = 0.7;
+                break;
+            default;
+        }
+
+
+        return $produto->getValor() * $desconto;
+    }
+}
+
+// instancia os produtos
+$produto1 = new Produto('Banana', 0.99, 2);
+$produto2 = new Produto('EnergÃ©tico', 5.49, 3);
+$produto3 = new Produto('Arroz', 20.0, 2);
+$produto4 = new Produto('Chocolate', 4.50, 1);
+$produto5 = new Produto('Leite', 3.73, 3);
+$produto6 = new Produto('Abacaxi', 2.40, 2);
+
+// intancia o caixa
+$caixa = new Caixa();
+
+// calcula o valor dos produtos com o desconto aplicado
+echo $caixa->calculaValorFinal($produto1, 3); echo PHP_EOL;
+echo $caixa->calculaValorFinal($produto2, 7); echo PHP_EOL;
+echo $caixa->calculaValorFinal($produto3, 1); echo PHP_EOL;
+echo $caixa->calculaValorFinal($produto4, 20); echo PHP_EOL;
+echo $caixa->calculaValorFinal($produto5, 3); echo PHP_EOL;
+echo $caixa->calculaValorFinal($produto6, 4); echo PHP_EOL;
