@@ -1,1 +1,68 @@
+<?php
+function getStdIn()
+{
+    return trim(fgets(STDIN));
+}
+
+//Inicia o programa
+echo 'DIGITE A QUANTIDADE DE CALORIAS: ';
+$totalCalorias = getStdIn();
+
+$msg = ' Alimentos consumidos ';
+$len = strlen($msg);
+echo str_pad($msg, $len + 12, '-', STR_PAD_BOTH) . PHP_EOL;
+
+$arrAlimentos = [];
+$input        = null;
+while (true) {
+    $alimento = null;
+    $caloria  = null;
+
+    echo 'Nome do alimento:';
+    $input = getStdIn();
+    echo PHP_EOL;
+    if (strtolower($input) == 'sair') {
+        break;
+    }
+    $alimento = $input;
+
+    echo 'Quantidade:';
+    $input = getStdIn();
+    echo PHP_EOL;
+    if (strtolower($input) == 'sair') {
+        break;
+    }
+    $caloria = $input;
+
+    $arrAlimentos[] = ['alimento' => $alimento, 'caloria' => $caloria];
+}
+
+//Calcula a quantidade de calorias consumidas pelo usuário
+$totalCaloriasConsumidas = 0;
+foreach ($arrAlimentos as $alimento) {
+    if (!floatval($alimento['caloria'])) {
+        continue;
+    }
+    $totalCaloriasConsumidas += $alimento['caloria'];
+}
+//Caso esteja abaixo da Média
+$mensagem = '';
+if ($totalCaloriasConsumidas < $totalCalorias) {
+    $mensagem = 'abaixo da média.';
+}
+//Caso esteja na Média
+média.'; 
+if ($totalCaloriasConsumidas == $totalCalorias) {
+    $mensagem = 'na média.'; 
+}
+//Caso esteja acima da Média
+if ($totalCalorias < $totalCaloriasConsumidas) {
+    $mensagem = 'acima na média.'; 
+}
+//Exibe a quantidade de calorias
+$msgFinal = "Você consumiu {$totalCaloriasConsumidas} calorias e está {$mensagem}";
+echo str_repeat('-', mb_strlen($msgFinal)) . PHP_EOL;
+echo $msgFinal.PHP_EOL;
+
+//REALIZADO EM PHP
 
