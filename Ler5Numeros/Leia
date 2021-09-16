@@ -1,0 +1,36 @@
+public class LeiaNumero {
+
+	public static void main(String[] args) {
+
+		int numeroLido;
+		int menor;
+		int maior;
+		final int CONTADOR = 5;
+
+		// Inicia com o primeiro numero lido
+		System.out.println("Informe um valor");
+		numeroLido = Integer.parseInt(JOptionPane.showInputDialog("Informe um valor"));
+
+		menor = numeroLido;
+		maior = numeroLido;
+
+		for (int i = 1; i < CONTADOR; i++) {
+			System.out.println("Informe um valor");
+			numeroLido = Integer.parseInt(JOptionPane.showInputDialog("Informe um valor"));
+
+			if(numeroLido > maior){
+				maior = numeroLido;
+			}
+
+			if(numeroLido < menor){
+				menor = numeroLido;
+			}
+
+		}
+
+		System.out.println("O menor número lido foi: " + menor);
+		System.out.println("O maior número lido foi: " + maior);
+		
+	}
+
+}
